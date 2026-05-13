@@ -29,9 +29,9 @@ The project develops in three stages:
 3. **Full sentiment-driven trading strategy**  
    A multi-asset, asset-linked news sentiment strategy that compares FinBERT, SieBERT, and Loughran--McDonald lexicon sentiment signals under walk-forward out-of-sample testing and transaction-cost-aware portfolio construction.
 
-The core conclusion is intentionally nuanced: **sentiment contains a small but detectable forecasting signal, especially as a cross-sectional ranking device, but the trading edge is fragile once turnover and realistic frictions are included.**
+The core conclusion: **sentiment contains a small but detectable forecasting signal, especially as a cross-sectional ranking device, but the trading edge is fragile once turnover and realistic frictions are included.**
 
-This project is not a claim of a production-ready alpha model. It is a research notebook suite focused on signal construction, empirical discipline, robustness testing, and honest interpretation of weak financial signals.
+This project is not a claim of a production-ready alpha model. It is a research notebook suite focused on signal construction, empirical discipline, robustness testing, and honest interpretation of financial signals.
 
 ---
 
@@ -63,7 +63,7 @@ Financial markets are noisy, adaptive systems where most apparent signals disapp
 - disagreement or emotional intensity may increase trading volume,
 - asset-specific headlines may help rank securities cross-sectionally even when aggregate return predictability is weak.
 
-The project asks a practical quant research question:
+The project asks a practical question:
 
 > Can modern NLP sentiment measures improve short-horizon return forecasts, and does that improvement survive the transition from prediction to a cost-aware trading rule?
 
@@ -144,7 +144,7 @@ The main lesson from this notebook is not that the neural model is a strong trad
 
 This notebook replicates the spirit of Paul Tetlock's famous media pessimism study using a modern, accessible sentiment proxy.
 
-Tetlock's original paper studies whether pessimistic financial media language predicts short-horizon market returns and trading activity. Since the original Wall Street Journal column data is difficult to reproduce directly, this notebook uses the **FRBSF Daily News Sentiment Index (DNSI)** as a broad aggregate news sentiment proxy.
+Tetlock's original paper studies whether pessimistic financial media language predicts short-horizon market returns and trading activity. Since the original Wall Street Journal column data is difficult to reproduce directly, this notebook uses the **FRBSF Daily News Sentiment Index (DNSI)** as an aggregate news sentiment proxy.
 
 ### Research Design
 
@@ -181,7 +181,7 @@ The replication finds weaker return predictability than Tetlock's original paper
 
 In the paper-period return regression, the five pessimism lags are not individually or jointly significant in a robust way. The estimated return effect is noisy and economically modest.
 
-The notebook's interpretation is that this could reflect:
+This could reflect:
 
 - a genuinely weak return effect,
 - dilution from using a broad DNSI index instead of the original WSJ-specific measure,
@@ -271,7 +271,7 @@ The notebook compares three sentiment sources:
 | SieBERT | General-purpose sentiment transformer |
 | Loughran--McDonald lexicon | Finance-domain dictionary baseline |
 
-This comparison is important because different sentiment models are useful for different objectives. A model that best captures trading activity may not be the same model that best ranks next-day returns.
+Different sentiment models are useful for different objectives. A model that best captures trading activity may not be the same model that best ranks next-day returns.
 
 ---
 
@@ -451,58 +451,6 @@ The main conclusion is therefore:
 | Gross backtest | Best Sharpe around 0.89 before costs | Signal can be monetized in idealized setting |
 | Net backtest | Performance collapses under modest costs | Current rule is not production-ready |
 | Mechanism tests | FinBERT strongly predicts volume | Finance-specific NLP captures attention channel |
-
----
-
-## What This Project Demonstrates
-
-This repository is designed to show more than just a backtest. It demonstrates a full research process:
-
-- building text-based financial signals,
-- comparing transformer and lexicon sentiment methods,
-- constructing market and sentiment features,
-- designing baselines before complex models,
-- using walk-forward out-of-sample evaluation,
-- separating statistical prediction from economic profitability,
-- testing transaction-cost sensitivity,
-- checking parameter stability and overfitting,
-- interpreting weak signals honestly.
-
-For quant research roles, the most important part of the project is the discipline of the workflow: the notebooks do not simply search for a profitable-looking result; they test whether the result is stable, interpretable, and economically realistic.
-
----
-
-## Technical Stack
-
-### Core Python
-
-- `pandas`
-- `numpy`
-- `matplotlib`
-- `scikit-learn`
-- `statsmodels`
-
-### Market Data
-
-- `yfinance`
-- `pandas_datareader`
-
-### NLP / Sentiment
-
-- `sentence-transformers`
-- `transformers`
-- `torch`
-- FinBERT
-- SieBERT
-- Loughran--McDonald dictionary
-
-### Modeling
-
-- logistic regression
-- neural networks in PyTorch
-- XGBoost extensions
-- HAC / Newey--West inference
-- rolling-origin validation
 
 ---
 
