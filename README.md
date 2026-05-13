@@ -477,8 +477,8 @@ The main notebooks are research notebooks rather than packaged production code. 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/sentiment-trading-strategy.git
-cd sentiment-trading-strategy
+git clone https://github.com/Shrike75/Sentiment-Trading-Strategy.git
+cd Sentiment-Trading-Strategy
 ```
 
 2. Install dependencies:
