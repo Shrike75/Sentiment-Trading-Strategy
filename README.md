@@ -479,6 +479,7 @@ The main notebooks are research notebooks rather than packaged production code. 
 ```bash
 git clone https://github.com/Shrike75/Sentiment-Trading-Strategy.git
 cd Sentiment-Trading-Strategy
+pip install -r requirements.txt
 ```
 
 2. Install dependencies:
