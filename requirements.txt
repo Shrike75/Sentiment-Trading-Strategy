@@ -1,0 +1,22 @@
+# Core data science stack
+numpy
+pandas
+scipy
+matplotlib
+scikit-learn
+statsmodels
+
+# Market / economic data
+yfinance
+pandas-datareader
+requests
+
+# NLP / ML models
+torch
+transformers
+sentence-transformers
+xgboost
+
+# Notebook utilities
+jupyter
+tqdm
